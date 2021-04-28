@@ -16,6 +16,7 @@ export default function SettingTheme({ setState, setStyles, styles,setStylesBack
 
     function saveChanged() {
         saveChangesTheme(styles.height,  styles.width, styles.borderRadius, stylesBack11.background)
+        setState(false)
     }
 
     function colors(e) {

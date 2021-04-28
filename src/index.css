@@ -229,7 +229,7 @@ button {
   margin-left: 50px;
 }
 
-.column_1, .column_2 {
+.column_1, .column_2, .column_3 {
   height: 100vh;
   transition: 500ms;
 }
@@ -281,4 +281,11 @@ button {
   font-size: 17px;
   background-color: transparent;
   cursor: pointer;
+}
+.setting img {
+  transition: 1s;
+  cursor: pointer;
+}
+.setting img:hover {
+  transform: rotate(-150deg);
 }

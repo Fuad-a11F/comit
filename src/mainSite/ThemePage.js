@@ -23,7 +23,7 @@ export default function ThemePage({ setImagePath, setStylesBack11, stylesBack11,
 
     return (
         <div>
-            <div className="setting"><img src={settings} width='30' height='30' alt="" onClick={() => setState(true)}/></div>
+            <div className="setting"><img src={settings} width='35' height='35' alt="" onClick={() => setState(true)}/></div>
             <div className='theme__page'>
                 {themeData.map(item => {
                     return <div key={item.id} className="theme__img"><img src={item.img} alt=""/><input className='checkbox' type="checkbox" checked={item.choose} onChange={(e) => changePhoto(e, item)} /></div>

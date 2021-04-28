@@ -5,6 +5,7 @@ import SiteBar from './siteBar/SiteBar'
 import MainPage from './mainSite/MainPage'
 import FirstPage from './mainSite/FirstPage'
 import ThemePage from './mainSite/ThemePage'
+import Smiles from './mainSite/smiles'
 import TextSetting from './mainSite/TextSetting'
 import Modal from './Modal/Modal'
 import CreateApp from './Modal/createApp'
@@ -14,6 +15,7 @@ import theme from './themeImg/theme.jpg';import theme1 from './themeImg/theme_2.
 function App() {
   let column1 = React.useRef()
   let column2 = React.useRef()
+  let column3 = React.useRef()
   let [modalOpen, setModalOpen] = React.useState(false)
   let [imagePath, setImagePath] =  React.useState()
   let [themeData, setThemeData] = React.useState([
@@ -92,7 +94,7 @@ function App() {
   let [mainText, setMainText] = React.useState(
     [
       {
-        text: '1'
+        text: ''
       },
       {
         styles: {
@@ -119,10 +121,19 @@ function App() {
   function textOpen() {
     column1.current.style.transform = 'translateY(-100%)'
     column2.current.style.transform = 'translateY(-100%)'
+    column3.current.style.transform = 'translateY(0%)'
   }
   function textClose() {
     column1.current.style.transform = 'translateY(0%)'
     column2.current.style.transform = 'translateY(0%)'
+  }
+  function smilesOpen() {
+    column1.current.style.transform = 'translateY(-100%)'
+    column3.current.style.transform = 'translateY(-200%)'
+  }  
+  function smilesClose() {
+    column1.current.style.transform = 'translateY(0%)'
+    column3.current.style.transform = 'translateY(0%)'
   }
 
   return (
@@ -138,13 +149,16 @@ function App() {
         <div className="wrapper">
           <div  className='site-bar'>
             <div ref={column1} className="column_1">
-              <Route path='/edit' render={() => <SiteBar mainPostCard={mainPostCard} textOpen={textOpen}/> } />
+              <Route path='/edit' render={() => <SiteBar smilesOpen={smilesOpen} mainPostCard={mainPostCard} textOpen={textOpen}/> } />
             </div>
             <div ref={column2} className="column_2">
               <Route path='/edit' render={() =>  <TextSetting textClose={textClose} setMainText={setMainText} mainText={mainText}/>} />
-            </div>           
+            </div>     
+            <div ref={column3} className="column_3">
+              <Route path='/edit' render={() =>  <Smiles smilesClose={smilesClose}/>} />
+            </div>        
           </div>
-   
+          
           <div className="work__zone">
             <Route exact path='/edit' render={() => <MainPage stylesBlock11={stylesBlock11} mainPostCard={mainPostCard} setMainText={setMainText} mainText={mainText} stylesBlock={stylesBlock} imagePath={imagePath}/> } />
             <Route exact path='/edit/theme' render={() => <ThemePage setStylesBack11={setStylesBack11} stylesBack11={stylesBack11} stylesBack11={stylesBack11} imagePath={imagePath} styles={styles} setStyles={setStyles} saveChangesTheme={saveChangesTheme} themeData={themeData} setThemeData={setThemeData} imagePath={imagePath} setImagePath={setImagePath} /> } />
